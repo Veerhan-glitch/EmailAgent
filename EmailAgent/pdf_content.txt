@@ -1,0 +1,62 @@
+# EMAIL AGENT SPECIFICATION DOCUMENT
+
+## PAGE 1
+
+### 1.1 EMAIL AGENT (Domain Agent)
+
+**DESCRIPTION**
+- Owns inbox triage, prioritization, drafting, follow-ups, routing and escalation
+- Converts email chaos into a clean decision queue for founder and ops
+
+**SKILLSET**
+- Inbox scan and thread mapping
+- Priority scoring (VIP, urgency, deadlines, keywords)
+- Categorization (action, FYI, waiting, spam, legal, finance)
+- Draft replies aligned to tone & policy
+- Follow-up detection and draft follow-ups
+- Escalation rules (notify, approval required, block)
+
+**TOOLS**
+- Gmail read, search, draft, send (send typically approval gated)
+- Optional: Slack for internal pings, Notion for storing notes
+
+**ONE EXAMPLE (USER PROMPT)**
+"Handle my inbox from today. Show only urgent items. Draft replies for approval and create follow-ups."
+
+**EXPECTED OUTPUT (USER VIEW)**
+- Top 10 important threads with reasons
+- Draft replies ready (not sent)
+- Follow-ups list with suggested timing
+- Blocked items with policy reasons
+
+**DO**
+- Always show evidence (thread links, message IDs)
+- Default to draft-only for external sending
+- Ask clarifying questions when recipients/intent unclear
+- Batch actions to reduce spam and noise
+
+**DON'T**
+- Never send external emails without policy approval
+- Never hallucinate facts not present in email/context
+- Never guess recipients when multiple candidates exist
+
+## PAGE 2
+
+**GUARDRAILS**
+- External send requires approval unless explicitly auto-allowed
+- PII detection before drafting or sending
+- Domain restrictions (never send confidential info outside allowed domains)
+- Safe tone enforcement (no aggressive or risky language)
+
+**EDGE CASES**
+- Multiple emails from same sender with conflicting urgency
+- Email thread contains legal or finance commitments
+- Missing tool scopes (gmail send missing)
+- Founder is on leave or DND mode
+- Reply-all risk with large external lists
+
+**SUCCESS METRICS**
+- Time saved per day
+- % of important emails correctly surfaced
+- Approval rejection rate (too many rejected = low quality)
+- Missed VIP items (must be near zero)
